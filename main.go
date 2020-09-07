@@ -20,7 +20,7 @@ func defaultHandler(resp *capsula.Response, req *capsula.Request) *capsula.Respo
 }
 
 func helloHandler(resp *capsula.Response, req *capsula.Request) *capsula.Response {
-	message := "Я буду говорить задом наоборот все что вы мне скажете. Скажите \"стоп\" или \"пока\" чтобы закончить"
+	message := "Я буду говорить задом наоборот все что Вы мне скажете. Скажите \"стоп\" \"хватит\" или \"пока\" чтобы закончить"
 	resp.Text(message)
 	resp.TTS(message)
 	return resp
@@ -49,7 +49,7 @@ func main() {
 	dr.Register("пока", endHandler)
 
 	config := capsula.NewConfig(
-		false,
+		true,
 		getEnv("SSL_CERT_FILE", "cert.cer"),
 		getEnv("SSL_KEY_FILE", "key.key"),
 		getEnv("LISTEN_ADDRESS", ":9000"),
