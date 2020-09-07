@@ -2,6 +2,7 @@ package capsula
 
 import "net/http"
 
+// corsMiddleware sets the correct cors for debugging to https://marusia-skill-tester.specproject.mail.ru/
 func corsMiddleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")

@@ -10,7 +10,7 @@ const (
 	ButtonPressed   RequestType = "ButtonPressed"
 )
 
-// Request структура входящего сообщения
+// Request structure of the incoming message
 type Request struct {
 	Meta struct {
 		ClientID string `json:"client_id"`
@@ -40,7 +40,7 @@ type Request struct {
 	Version string
 }
 
-// OriginalUtterance текст сообщения
+// OriginalUtterance message text
 func (r *Request) OriginalUtterance() string {
 	return r.Request.OriginalUtterance
 
@@ -56,7 +56,7 @@ const (
 	ItemsList CardType = "ItemsList"
 )
 
-// Response структура ответа
+// Response response strucure
 type Response struct {
 	Response struct {
 		Text string `json:"text"`
@@ -80,7 +80,7 @@ type Response struct {
 	Version string `json:"version"`
 }
 
-// LoadSession ...
+// LoadSession prepare respons from request
 func (resp *Response) LoadSession(req *Request) *Response {
 	resp.Session.SessionID = req.Session.SessionID
 	resp.Session.MessageID = req.Session.MessageID
@@ -95,13 +95,13 @@ func (resp *Response) Text(s string) *Response {
 	return resp
 }
 
-// TTS ...
+// TTS text to speech
 func (resp *Response) TTS(s string) *Response {
 	resp.Response.TTS = s
 	return resp
 }
 
-// EndSession ...
+// EndSession mark session as ended
 func (resp *Response) EndSession() *Response {
 	resp.Response.EndSession = true
 	return resp

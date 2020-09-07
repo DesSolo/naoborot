@@ -1,8 +1,8 @@
 package capsula
 
 import (
+	"fmt"
 	"strings"
-	"errors"
 )
 
 // DialogFunc ...
@@ -46,5 +46,5 @@ func (r *DiaogRouter) Select(token string) (DialogFunc, error) {
 	if r.defaultHandler != nil {
 		return *r.defaultHandler, nil
 	}
-	return nil, errors.New("dialog endpoint not found")
+	return nil, fmt.Errorf("dialog endpoint not found by token: %s", token)
 }
